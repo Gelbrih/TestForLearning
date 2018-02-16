@@ -1,5 +1,6 @@
 mkdir app
 cd app
+mkdir css
 mkdir fonts
 mkdir images
 mkdir js
