@@ -231,7 +231,7 @@ gulp.task('build', [
 # Deploy
 --------------------------------------------------------------*/
 
-gulp.task('rsync', function() {
+gulp.task('deploy', function() {
 	gulp.src('dist/**')
 	.pipe(rsync({
 		root: 'dist/',

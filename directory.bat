@@ -1,9 +1,10 @@
-mkdir app
+md app
+md dist
 cd app
-mkdir css
-mkdir fonts
-mkdir images
-mkdir js
-mkdir libs
-mkdir sass
+md fonts
+md images
+md js
+md libs
+md sass
+@echo off > index.html
 cd ../
