@@ -44,19 +44,10 @@ var path = {
 	},
 	src: {
 		html:  		'app/*.html',
-		styles: 	'app/sass/**/*.scss',
-		stylesLib:  [
-					'app/libs/slick-carousel/slick/slick.scss',
-					'app/libs/slick-carousel/slick/slick-theme.scss',
-					'app/libs/magnific-popup/src/css/main.scss'
-					],
-		scripts:    'app/js/**/*.js',
-		scriptsLib: [
-					'app/libs/jquery/dist/jquery.min.js', 
-					'app/libs/jquery-validation/dist/jquery.validate.min.js',
-					'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js',
-					'app/libs/slick-carousel/slick/slick.min.js'
-					],
+		styles: 	'app/sass/main.scss',
+		stylesLib:  'app/sass/libs.scss',
+		scripts:    'app/js/main.js',
+		scriptsLib: 'app/js/libs.js',
 		images: 	'app/images/**/*.*',
 		fonts: 		'app/fonts/**/*.*',
 		php: 		'app/*.php',
@@ -112,7 +103,7 @@ gulp.task('styles', function () {
 	.pipe(plumber())      
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	.pipe(autoprefixer({browsers: autoprefixerList}))
-	.pipe(concat('main.min.css')) 
+	.pipe(rename({suffix: '.min'}))
 	.pipe(gulp.dest(path.build.styles)) 
 	.pipe(server.reload({stream: true}));
 });
@@ -121,7 +112,7 @@ gulp.task('stylesLib', function () {
 	gulp.src(path.src.stylesLib)        
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	.pipe(autoprefixer({browsers: autoprefixerList}))
-	.pipe(concat('libs.min.css')) 
+	.pipe(rename({suffix: '.min'}))
 	.pipe(gulp.dest(path.build.stylesLib));
 });	
 
@@ -134,16 +125,18 @@ gulp.task('scripts', function () {
 	.pipe(plumber())  
 	.pipe(rigger())   
 	.pipe(babel({presets: ['env']}))
-	.pipe(concat('main.min.js')) 
+	.pipe(rename({suffix: '.min'}))
 	.pipe(uglify()) 
 	.pipe(gulp.dest(path.build.scripts)) 
 	.pipe(server.reload({stream: true}));
 });
 
 gulp.task('scriptsLib', function () {
-	gulp.src(path.src.scriptsLib)       
+	gulp.src(path.src.scriptsLib) 
+	.pipe(plumber())  
+	.pipe(rigger())      
 	.pipe(babel({presets: ['env']}))
-	.pipe(concat('libs.min.js')) 
+	.pipe(rename({suffix: '.min'}))
 	.pipe(uglify()) 
 	.pipe(gulp.dest(path.build.scriptsLib));
 });
