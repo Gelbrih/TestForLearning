@@ -1,6 +1,7 @@
 var gulp     	 = require('gulp'),
 	babel 		 = require("gulp-babel"),
 	sass    	 = require('gulp-sass'),
+	csscomb 	 = require('gulp-csscomb'),
 	server    	 = require('browser-sync'),
 	rsync 		 = require('gulp-rsync'),
 	plumber 	 = require('gulp-plumber'),
@@ -102,7 +103,9 @@ gulp.task('styles', function () {
 	gulp.src(path.src.styles)  
 	.pipe(plumber())      
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+	//.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
 	.pipe(autoprefixer({browsers: autoprefixerList}))
+	//.pipe(csscomb())
 	.pipe(rename({suffix: '.min'}))
 	.pipe(gulp.dest(path.build.styles)) 
 	.pipe(server.reload({stream: true}));
