@@ -31,37 +31,40 @@ var autoprefixerList = [
 # Paths
 --------------------------------------------------------------*/
 
+var dist = 'dist/',
+ 	src  = 'app/';
+
 var path = {
 	build: {
-		html:  		'dist/',
-		styles:   	'dist/css/',
-		stylesLib:  'dist/css/',
-		scripts:    'dist/js/',
-		scriptsLib: 'dist/js/',		
-		images:   	'dist/images/',
-		fonts: 		'dist/fonts/',
-		php:   		'dist/',
-		htaccess: 	'dist/'
+		html:  		dist,
+		styles:   	dist + 'css/',
+		stylesLib:  dist + 'css/',
+		scripts:    dist + 'js/',
+		scriptsLib: dist + 'js/',		
+		images:   	dist + 'images/',
+		fonts: 		dist + 'fonts/',
+		php:   		dist,
+		htaccess: 	dist
 	},
 	src: {
-		html:  		'app/*.html',
-		styles: 	'app/sass/main.scss',
-		stylesLib:  'app/sass/libs.scss',
-		scripts:    'app/js/main.js',
-		scriptsLib: 'app/js/libs.js',
-		images: 	'app/images/**/*.*',
-		fonts: 		'app/fonts/**/*.*',
-		php: 		'app/*.php',
-		htaccess: 	'app/.htaccess'
+		html:  		src + '*.html',
+		styles: 	src + 'sass/main.scss',
+		stylesLib:  src + 'sass/libs.scss',
+		scripts:    src + 'js/main.js',
+		scriptsLib: src + 'js/libs.js',
+		images: 	src + 'images/**/*.*',
+		fonts: 		src + 'fonts/**/*.*',
+		php: 		src + '*.php',
+		htaccess: 	src + '.htaccess'
 	},
 	watch: {
-		html:   	'app/*.html',
-		styles: 	'app/sass/**/*.scss',
-		scripts:    'app/js/**/*.js',		
-		images: 	'app/images/**/*.*',
-		php: 		'app/*.php'
+		html:   	src + '*.html',
+		styles: 	src + 'sass/**/*.scss',
+		scripts:    src + 'js/**/*.js',		
+		images: 	src + 'images/**/*.*',
+		php: 		src + '*.php'
 	},
-	clean:      	'dist'
+	clean:      	dist
 };
 
 /*--------------------------------------------------------------
@@ -71,7 +74,7 @@ var path = {
 gulp.task('server', function() { 
 	server ({ 
 		server: { 
-			baseDir: 'dist' 
+			baseDir: dist 
 		},
 		notify: false 
 	});
@@ -228,9 +231,9 @@ gulp.task('build', [
 --------------------------------------------------------------*/
 
 gulp.task('deploy', function() {
-	gulp.src('dist/**')
+	gulp.src(dist + '**')
 	.pipe(rsync({
-		root: 'dist/',
+		root: dist,
 		hostname: 'username@yousite.com',
 		destination: 'yousite/public_html/',		
 		recursive: true,
