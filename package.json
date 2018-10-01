@@ -26,6 +26,7 @@
     "gulp-rigger": "^0.5.8",
     "gulp-rsync": "0.0.8",
     "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-uglifyjs": "^0.6.2",
     "imagemin-pngquant": "^5.0.1"
   }

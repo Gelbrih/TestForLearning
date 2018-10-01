@@ -14,6 +14,7 @@ var gulp     	 = require('gulp'),
 	cache    	 = require('gulp-cache'),
 	autoprefixer = require('gulp-autoprefixer'),
 	iconfont 	 = require('gulp-iconfont'),
+	sourcemaps	 = require('gulp-sourcemaps'),
 	del 		 = require('del');
 
 var autoprefixerList = [
@@ -104,21 +105,25 @@ gulp.task('html', function () {
 
 gulp.task('styles', function () {
 	gulp.src(path.src.styles)  
+	.pipe(sourcemaps.init({loadMaps: true}))  
 	.pipe(plumber())      
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	//.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
 	.pipe(autoprefixer({browsers: autoprefixerList}))
 	//.pipe(csscomb())
 	.pipe(rename({suffix: '.min'}))
+	.pipe(sourcemaps.write('../maps/'))
 	.pipe(gulp.dest(path.build.styles)) 
 	.pipe(server.reload({stream: true}));
 });
 
 gulp.task('stylesLib', function () {
-	gulp.src(path.src.stylesLib)        
+	gulp.src(path.src.stylesLib) 
+	.pipe(sourcemaps.init({loadMaps: true}))        
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	.pipe(autoprefixer({browsers: autoprefixerList}))
 	.pipe(rename({suffix: '.min'}))
+	.pipe(sourcemaps.write('../maps/'))
 	.pipe(gulp.dest(path.build.stylesLib));
 });	
 
@@ -127,7 +132,7 @@ gulp.task('stylesLib', function () {
 --------------------------------------------------------------*/
 
 gulp.task('scripts', function () {
-	gulp.src(path.src.scripts)  
+	gulp.src(path.src.scripts)	
 	.pipe(plumber())  
 	.pipe(rigger())   
 	.pipe(babel({presets: ['env']}))
