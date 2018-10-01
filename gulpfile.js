@@ -5,7 +5,7 @@ var gulp     	 = require('gulp'),
 	server    	 = require('browser-sync'),
 	rsync 		 = require('gulp-rsync'),
 	plumber 	 = require('gulp-plumber'),
-	uglify   	 = require('gulp-uglifyjs'),
+	uglify   	 = require('gulp-uglify'),
 	rigger 		 = require('gulp-rigger'),
 	concat       = require('gulp-concat'),
 	rename   	 = require('gulp-rename'),
@@ -51,7 +51,10 @@ var path = {
 		html:  		src + '*.html',
 		styles: 	src + 'sass/main.scss',
 		stylesLib:  src + 'sass/libs.scss',
-		scripts:    src + 'js/main.js',
+		scripts:    [
+					'!'+ src + 'js/libs.js',
+					src +'js/*.js'
+					],
 		scriptsLib: src + 'js/libs.js',
 		images: 	src + 'images/**/*.*',
 		fonts: 		src + 'fonts/**/*.*',
@@ -131,24 +134,32 @@ gulp.task('stylesLib', function () {
 # Scripts
 --------------------------------------------------------------*/
 
+/* Sourcemaps don't support rigger. If maps aren't needed, comment 1. */
+
 gulp.task('scripts', function () {
-	gulp.src(path.src.scripts)	
+	gulp.src(path.src.scripts)	 
+	.pipe(sourcemaps.init({loadMaps: true})) //1
+	//.pipe(rigger()) //2	 	
 	.pipe(plumber())  
-	.pipe(rigger())   
-	.pipe(babel({presets: ['env']}))
-	.pipe(rename({suffix: '.min'}))
-	.pipe(uglify()) 
+	.pipe(babel({presets: ['env']}))	
+	.pipe(concat('main.min.js')) //1
+	.pipe(uglify())
+	//.pipe(rename({suffix: '.min'})) //2
+	.pipe(sourcemaps.write('../maps/')) //1
 	.pipe(gulp.dest(path.build.scripts)) 
 	.pipe(server.reload({stream: true}));
 });
 
 gulp.task('scriptsLib', function () {
 	gulp.src(path.src.scriptsLib) 
-	.pipe(plumber())  
-	.pipe(rigger())      
+	//.pipe(sourcemaps.init({loadMaps: true}))
+	.pipe(rigger()) 
+	.pipe(plumber()) 
 	.pipe(babel({presets: ['env']}))
-	.pipe(rename({suffix: '.min'}))
+	//.pipe(concat('main.min.js'))
 	.pipe(uglify()) 
+	.pipe(rename({suffix: '.min'}))
+	//.pipe(sourcemaps.write('../maps/'))
 	.pipe(gulp.dest(path.build.scriptsLib));
 });
 
