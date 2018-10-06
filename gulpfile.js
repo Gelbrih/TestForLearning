@@ -39,9 +39,7 @@ var path = {
 	build: {
 		html:  		dist,
 		styles:   	dist + 'css/',
-		stylesLib:  dist + 'css/',
-		scripts:    dist + 'js/',
-		scriptsLib: dist + 'js/',		
+		scripts:    dist + 'js/',		
 		images:   	dist + 'images/',
 		fonts: 		dist + 'fonts/',
 		php:   		dist,
@@ -50,12 +48,7 @@ var path = {
 	src: {
 		html:  		src + '*.html',
 		styles: 	src + 'sass/main.scss',
-		stylesLib:  src + 'sass/libs.scss',
-		scripts:    [
-					'!'+ src + 'js/libs.js',
-					src +'js/*.js'
-					],
-		scriptsLib: src + 'js/libs.js',
+		scripts:    src + 'js/**/*.js',
 		images: 	src + 'images/**/*.*',
 		fonts: 		src + 'fonts/**/*.*',
 		php: 		src + '*.php',
@@ -112,23 +105,13 @@ gulp.task('styles', function () {
 	.pipe(plumber())      
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	//.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-	.pipe(autoprefixer({browsers: autoprefixerList}))
+	.pipe(autoprefixer({browsers: ['last 5 versions']}))
 	//.pipe(csscomb())
 	.pipe(rename({suffix: '.min'}))
 	.pipe(sourcemaps.write('../maps/'))
 	.pipe(gulp.dest(path.build.styles)) 
 	.pipe(server.reload({stream: true}));
 });
-
-gulp.task('stylesLib', function () {
-	gulp.src(path.src.stylesLib) 
-	.pipe(sourcemaps.init({loadMaps: true}))        
-	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-	.pipe(autoprefixer({browsers: autoprefixerList}))
-	.pipe(rename({suffix: '.min'}))
-	.pipe(sourcemaps.write('../maps/'))
-	.pipe(gulp.dest(path.build.stylesLib));
-});	
 
 /*--------------------------------------------------------------
 # Scripts
@@ -148,19 +131,6 @@ gulp.task('scripts', function () {
 	.pipe(sourcemaps.write('../maps/')) //1
 	.pipe(gulp.dest(path.build.scripts)) 
 	.pipe(server.reload({stream: true}));
-});
-
-gulp.task('scriptsLib', function () {
-	gulp.src(path.src.scriptsLib) 
-	//.pipe(sourcemaps.init({loadMaps: true}))
-	.pipe(rigger()) 
-	.pipe(plumber()) 
-	.pipe(babel({presets: ['env']}))
-	//.pipe(concat('main.min.js'))
-	.pipe(uglify()) 
-	.pipe(rename({suffix: '.min'}))
-	//.pipe(sourcemaps.write('../maps/'))
-	.pipe(gulp.dest(path.build.scriptsLib));
 });
 
 /*--------------------------------------------------------------
@@ -233,9 +203,7 @@ gulp.task('build', [
     'clean',  
     'html',  
     'styles',
-    'stylesLib',
     'scripts',
-    'scriptsLib',
     'images',    
     'fonts',  
     'php',  
