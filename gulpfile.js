@@ -10,7 +10,6 @@ var gulp     	 = require('gulp'),
 	concat       = require('gulp-concat'),
 	rename   	 = require('gulp-rename'),
 	imagemin 	 = require('gulp-imagemin'),
-	pngquant 	 = require('imagemin-pngquant'),
 	cache    	 = require('gulp-cache'),
 	autoprefixer = require('gulp-autoprefixer'),
 	iconfont 	 = require('gulp-iconfont'),
@@ -38,8 +37,8 @@ var dist = 'dist/',
 var path = {
 	build: {
 		html:  		dist,
-		styles:   	dist + 'css/',
-		scripts:    dist + 'js/',		
+		sass:   	dist + 'css/',
+		js:    		dist + 'js/',		
 		images:   	dist + 'images/',
 		fonts: 		dist + 'fonts/',
 		php:   		dist,
@@ -47,8 +46,8 @@ var path = {
 	},
 	src: {
 		html:  		src + '*.html',
-		styles: 	src + 'sass/main.scss',
-		scripts:    src + 'js/**/*.js',
+		sass: 		src + 'sass/main.scss',
+		js:    		src + 'js/**/*.js',
 		images: 	src + 'images/**/*.*',
 		fonts: 		src + 'fonts/**/*.*',
 		php: 		src + '*.php',
@@ -56,8 +55,8 @@ var path = {
 	},
 	watch: {
 		html:   	src + '*.html',
-		styles: 	src + 'sass/**/*.scss',
-		scripts:    src + 'js/**/*.js',		
+		sass: 		src + 'sass/**/*.scss',
+		js:    		src + 'js/**/*.js',		
 		images: 	src + 'images/**/*.*',
 		php: 		src + '*.php'
 	},
@@ -99,8 +98,8 @@ gulp.task('html', function () {
 # Styles
 --------------------------------------------------------------*/
 
-gulp.task('styles', function () {
-	gulp.src(path.src.styles)  
+gulp.task('sass', function () {
+	gulp.src(path.src.sass)  
 	.pipe(sourcemaps.init({loadMaps: true}))  
 	.pipe(plumber())      
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
@@ -109,7 +108,7 @@ gulp.task('styles', function () {
 	//.pipe(csscomb())
 	.pipe(rename({suffix: '.min'}))
 	.pipe(sourcemaps.write('../maps/'))
-	.pipe(gulp.dest(path.build.styles)) 
+	.pipe(gulp.dest(path.build.sass)) 
 	.pipe(server.reload({stream: true}));
 });
 
@@ -117,10 +116,10 @@ gulp.task('styles', function () {
 # Scripts
 --------------------------------------------------------------*/
 
-/* Sourcemaps don't support rigger. If maps aren't needed, comment 1. */
+/* Sourcemaps doesn't support rigger. If maps aren't needed, comment 1. */
 
-gulp.task('scripts', function () {
-	gulp.src(path.src.scripts)	 
+gulp.task('js', function () {
+	gulp.src(path.src.js)	 
 	.pipe(sourcemaps.init({loadMaps: true})) //1
 	//.pipe(rigger()) //2	 	
 	.pipe(plumber())  
@@ -129,7 +128,7 @@ gulp.task('scripts', function () {
 	.pipe(uglify())
 	//.pipe(rename({suffix: '.min'})) //2
 	.pipe(sourcemaps.write('../maps/')) //1
-	.pipe(gulp.dest(path.build.scripts)) 
+	.pipe(gulp.dest(path.build.js)) 
 	.pipe(server.reload({stream: true}));
 });
 
@@ -139,12 +138,17 @@ gulp.task('scripts', function () {
 
 gulp.task('images', function () {
 	gulp.src(path.src.images) 
-	.pipe(cache(imagemin({ 
-		interlaced: true,
-		progressive: true,
-		svgoPlugins: [{removeViewBox: false}],
-		use: [pngquant()]
-	})))   
+	.pipe(imagemin([
+		imagemin.gifsicle({interlaced: true}),
+		imagemin.jpegtran({progressive: true}),
+		imagemin.optipng({optimizationLevel: 5}),
+		imagemin.svgo({
+			plugins: [
+				{removeViewBox: true},
+				{cleanupIDs: false}
+			]
+		})
+	]))
 	.pipe(gulp.dest(path.build.images)); 
 });
 
@@ -186,8 +190,8 @@ gulp.task('htaccess', function () {
 
 gulp.task('watch', ['server'], function() {
     gulp.watch(path.watch.html, ['html']);
-    gulp.watch(path.watch.styles, ['styles']);
-    gulp.watch(path.watch.scripts, ['scripts']);
+    gulp.watch(path.watch.styles, ['sass']);
+    gulp.watch(path.watch.scripts, ['js']);
     gulp.watch(path.watch.images, ['images']);
 });
 
@@ -202,8 +206,8 @@ gulp.task('clean', function () {
 gulp.task('build', [
     'clean',  
     'html',  
-    'styles',
-    'scripts',
+    'sass',
+    'js',
     'images',    
     'fonts',  
     'php',  
