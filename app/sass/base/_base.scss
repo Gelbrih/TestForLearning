@@ -1,0 +1,43 @@
+html {
+	font-size: 14px;	
+}
+
+html,
+body {
+	height: 100%;
+}
+
+h1 {
+	font-size: $h1-font-size;	
+}
+h2 {
+	font-size: $h2-font-size;
+}
+h3 {
+	font-size: $h3-font-size;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	text-decoration: $link-decoration;
+	color: $link-color;
+
+	&:hover {
+		color: $link-hover-color;
+		text-decoration: $link-hover-decoration;
+	}
+}
+
+.clear:before,
+.clear:after,
+.header:before,
+.header:after,
+.content-wrapper:before,
+.content-wrapper:after,
+.footer:before,
+.footer:after {
+	@include clearfix;
+}

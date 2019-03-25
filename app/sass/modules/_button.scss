@@ -1,0 +1,16 @@
+.button {
+	display: inline-block;
+	padding: $button-padding;
+	border: none;
+	border-radius: $button-border-radius;
+	text-transform: uppercase;
+	color: $button-color;
+	background: $button-bg;
+	cursor: pointer;
+
+	&:hover {
+		color: $button-hover-color;
+		background: $button-hover-bg;
+		text-decoration: none;
+	};
+}

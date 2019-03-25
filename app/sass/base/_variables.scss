@@ -1,0 +1,126 @@
+//------------------------------------------------------------//
+// Colors
+//------------------------------------------------------------//
+
+$white:		#fff;
+$gray:		#ced4da; 
+$black:		#000;
+
+$blue:		#007bff;
+$purple:	#6f42c1;
+$pink:		#e83e8c;
+$red:		#f40003;
+$orange:	#fd7e14;
+$yellow:	#ffc107;				
+$green:		#28a745;
+$teal:		#20c997;
+$cyan:		#17a2b8;
+
+$primary:	$blue;
+$secondary:	$orange;
+$tertiary:  $gray;
+
+$success:	$green;
+$info:		$cyan;
+$warning:	$yellow;
+$danger:	$red;
+
+//------------------------------------------------------------//
+// Fonts
+//------------------------------------------------------------//
+
+$font-family-sans-serif:	"Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-monospace:		SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:          $font-family-sans-serif;
+
+$font-size-base:			1rem;
+
+$font-weight-light:     	300;
+$font-weight-normal:    	400;
+$font-weight-bold:      	700;
+
+$h1-font-size:          	$font-size-base * 2.5;
+$h2-font-size:          	$font-size-base * 2;
+$h3-font-size:          	$font-size-base * 1.75;
+$h4-font-size:          	$font-size-base * 1.5;
+$h5-font-size:          	$font-size-base * 1.25;
+$h6-font-size:          	$font-size-base;
+
+$headings-font-weight:		$font-weight-bold;
+
+//------------------------------------------------------------//
+// Links
+//------------------------------------------------------------//
+
+$link-color:				$blue;
+$link-decoration:			none;
+$link-hover-color:			darken($link-color, 20%);
+$link-hover-decoration:		underline;
+
+//------------------------------------------------------------//
+// Border
+//------------------------------------------------------------//
+
+$border:				1px solid lighten($black, 35%);
+$border-radius:			.3rem;
+
+$box-shadow:			0 .5rem 1rem rgba($black, .25);
+
+//------------------------------------------------------------//
+// Tables
+//------------------------------------------------------------//
+
+$table-border:	$border;
+
+$table-hover-bg:        rgba($black, .075);
+$table-active-bg:       $table-hover-bg;
+
+$table-head-color:      $black;
+$table-head-bg:         $gray;
+
+//------------------------------------------------------------//
+// Forms
+//------------------------------------------------------------//
+
+$label-margin:           	0 0 1rem;
+
+$input-margin:           	0 0 1rem;
+$input-padding:          	.5rem .5rem;
+
+$input-border-color:        $border;
+$input-border-radius:       $border-radius;
+
+$input-placeholder-color:	$gray;
+
+//------------------------------------------------------------//
+// Buttons
+//------------------------------------------------------------//
+
+$button-padding:       .7rem 1rem;
+
+$button-color:			$white;
+$button-bg:            	$primary;
+$button-hover-color:	$white;
+$button-hover-bg:      	$secondary;
+
+$button-border-radius:	$border-radius;
+
+//------------------------------------------------------------//
+// Modal
+//------------------------------------------------------------//
+
+$modal-bg:                  $white;
+$modal-border-radius:       $border-radius;
+$modal-box-shadow:       	box-shadow;
+
+//------------------------------------------------------------//
+// Breakpoints
+//------------------------------------------------------------//
+
+$grid-breakpoints: (
+  xs: 480px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
