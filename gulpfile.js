@@ -1,5 +1,6 @@
 var gulp     	 = require('gulp'),
 	babel 		 = require("gulp-babel"),
+	mocha		 = require('gulp-mocha'),
 	sass    	 = require('gulp-sass'),
 	csscomb 	 = require('gulp-csscomb'),
 	server    	 = require('browser-sync'),
@@ -51,14 +52,16 @@ var path = {
 		images: 	src + 'images/**/*.*',
 		fonts: 		src + 'fonts/**/*.*',
 		php: 		src + '*.php',
-		htaccess: 	src + '.htaccess'
+		htaccess: 	src + '.htaccess',
+		test: 		src + 'tests/*.js'
 	},
 	watch: {
 		html:   	src + '*.html',
 		sass: 		src + 'sass/**/*.scss',
 		js:    		src + 'js/**/*.js',		
 		images: 	src + 'images/**/*.*',
-		php: 		src + '*.php'
+		php: 		src + '*.php',
+		test: 		src + 'tests/*.js'
 	},
 	clean:      	dist
 };
@@ -123,7 +126,7 @@ gulp.task('js', function () {
 	.pipe(sourcemaps.init({loadMaps: true})) //1
 	//.pipe(rigger()) //2	 	
 	.pipe(plumber())  
-	.pipe(babel({presets: ['env']}))	
+	.pipe(babel())	
 	.pipe(concat('main.min.js')) //1
 	.pipe(uglify())
 	//.pipe(rename({suffix: '.min'})) //2
@@ -182,6 +185,16 @@ gulp.task('php', function () {
 gulp.task('htaccess', function () {
     gulp.src(path.src.htaccess) 
     .pipe(gulp.dest(path.build.htaccess)) 
+});
+
+/*--------------------------------------------------------------
+# Test
+--------------------------------------------------------------*/
+
+gulp.task('test', function () {
+	gulp.src('app/tests/*.js', {read: false})	 
+	.pipe(babel())	
+	 .pipe(mocha({require: ['@babel/register']}));	
 });
 
 /*--------------------------------------------------------------
