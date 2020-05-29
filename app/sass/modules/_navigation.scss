@@ -1,76 +1,84 @@
 .menu {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 .menu-item {  
-	text-align: center; 	
+    text-align: center; 
+    border-bottom: none;  
 
     &:not(:first-of-type) {
-        border-top: 1px solid rgba(255, 255, 255, .2);
-    }
-
-    &:not(:last-of-type) {
-        border-bottom: 1px solid rgba(0, 0, 0, .2);
-    }   
-
-    @include mq(md) {
-    	float: left;    	
-    	border: none !important;    	
-    };
+        border-left: $border; 
+    }          
 }
 
 .menu-link {
-	display: block;
-	padding: .75rem 2rem;
-
-	&:hover {
-		text-decoration: none;
-	};
-}
-
-.main-navigation {
-	display: none;
-	width: 100%;  
-	margin: 2rem auto 0 ;	
-
-	&:before,
-	&:after {
-		@include clearfix;
-	};
-
-	@include mq(md) {
-		display: block;		
-		width: auto;
-	};
-}
-
-.menu-label {
-	float: right;
     display: block;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    color: transparent;
-    background: url("../images/icon-menu.png") no-repeat; 
+    padding: .5rem 1rem;
+}
 
-    @include mq(md) {
-    	display: none;
+.menu-toggle-label {
+    display: none;
+
+    @include mq(md,max) {
+        position: absolute;
+        display: block;        
+        width: 25px;
+        height: 25px;
+        top: 0;
+        right: 25px;
+        cursor: pointer;
+        background: url("../images/icon-menu.png") no-repeat; 
     };
 }
 
-.menu-toggle {
+.menu-toggle {    
     display: none;
 
-    &:checked {
+    @include mq(md,max) {
+        &:checked {
 
-        + .menu-label {
-            background-image: url("../images/icon-close.png");
-        }
+            + .menu-toggle-label {
+                background-image: url("../images/icon-close.png");
+            }
 
-        ~ .main-navigation {
-            display: block;
+            ~.menu {
+                display: block;
+                margin-top: 30px;
+            }
         }
+    }
+}
+
+.main-navigation {    
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    &:before,
+    &:after {
+        @include clearfix;
+    };
+
+    .main-menu {         
+        -webkit-display: flex;
+        display: flex;
+        -webkit-flex-flow: nowrap row;
+        flex-flow: nowrap row;
+        margin: 20px 0 10px;
+
+        @include mq(md,max) {
+            display: none; 
+        };   
+    }
+
+    .menu-item {
+        -webkit-flex: auto;
+        flex: auto;
+
+        @include mq(md,max) {   
+            border-bottom: $border; 
+            border-left:none; 
+        };
     }
 }

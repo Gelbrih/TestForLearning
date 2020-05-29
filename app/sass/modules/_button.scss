@@ -1,16 +1,16 @@
-.button {
+button {
 	display: inline-block;
 	padding: $button-padding;
 	border: none;
-	border-radius: $button-border-radius;
+	border-radius: $border-radius;
 	text-transform: uppercase;
-	color: $button-color;
-	background: $button-bg;
+	color: $white;
+	background: $primary;
 	cursor: pointer;
 
 	&:hover {
-		color: $button-hover-color;
-		background: $button-hover-bg;
+		color: $white;
+		background: $secondary;
 		text-decoration: none;
 	};
 }

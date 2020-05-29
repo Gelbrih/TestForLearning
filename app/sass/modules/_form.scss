@@ -1,17 +1,15 @@
-label {
-	margin: $label-margin;
+form {
+	padding: 5px 20px;
 }
-
 input {	
 	margin: $input-margin;
 	padding: $input-padding;
 	border: $border;
 	border-radius: $border-radius;
-	outline: none;
 }
 
 textarea {
 	width: 100%;
 	box-sizing: border-box;
-	outline: none;
+	border-radius: $border-radius;
 }

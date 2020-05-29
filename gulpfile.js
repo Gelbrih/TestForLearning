@@ -1,21 +1,21 @@
-var gulp     	 = require('gulp'),
-	babel 		 = require("gulp-babel"),
-	mocha		 = require('gulp-mocha'),
-	sass    	 = require('gulp-sass'),
-	csscomb 	 = require('gulp-csscomb'),
-	server    	 = require('browser-sync'),
-	rsync 		 = require('gulp-rsync'),
-	plumber 	 = require('gulp-plumber'),
-	uglify   	 = require('gulp-uglify'),
-	rigger 		 = require('gulp-rigger'),
-	concat       = require('gulp-concat'),
-	rename   	 = require('gulp-rename'),
-	imagemin 	 = require('gulp-imagemin'),
-	cache    	 = require('gulp-cache'),
-	autoprefixer = require('gulp-autoprefixer'),
-	iconfont 	 = require('gulp-iconfont'),
-	sourcemaps	 = require('gulp-sourcemaps'),
-	del 		 = require('del');
+var gulp     	 	= require('gulp'),
+	 babel 		 	= require("gulp-babel"),
+	 mocha		 	= require('gulp-mocha'),
+	 sass    	 	= require('gulp-sass'),
+	 csscomb 	 	= require('gulp-csscomb'),
+	 server    	 	= require('browser-sync'),
+	 rsync 		 	= require('gulp-rsync'),
+	 plumber 	 	= require('gulp-plumber'),
+	 uglify   	 	= require('gulp-uglify'),
+	 rigger 		 	= require('gulp-rigger'),
+	 concat       	= require('gulp-concat'),
+	 rename   	 	= require('gulp-rename'),
+	 imagemin 	 	= require('gulp-imagemin'),
+	 cache    	 	= require('gulp-cache'),
+	 autoprefixer 	= require('gulp-autoprefixer'),
+	 iconfont 	 	= require('gulp-iconfont'),
+	 sourcemaps	 	= require('gulp-sourcemaps'),
+	 del 		 		= require('del');
 
 var autoprefixerList = [
 	'Chrome >= 45',
@@ -33,37 +33,37 @@ var autoprefixerList = [
 --------------------------------------------------------------*/
 
 var dist = 'dist/',
- 	src  = 'app/';
+ 	 src  = 'app/';
 
 var path = {
-	build: {
-		html:  		dist,
-		sass:   	dist + 'css/',
-		js:    		dist + 'js/',		
-		images:   	dist + 'images/',
-		fonts: 		dist + 'fonts/',
-		php:   		dist,
-		htaccess: 	dist
-	},
-	src: {
-		html:  		src + '*.html',
-		sass: 		src + 'sass/main.scss',
-		js:    		src + 'js/**/*.js',
-		images: 	src + 'images/**/*.*',
-		fonts: 		src + 'fonts/**/*.*',
-		php: 		src + '*.php',
-		htaccess: 	src + '.htaccess',
-		test: 		src + 'tests/*.js'
-	},
-	watch: {
-		html:   	src + '*.html',
-		sass: 		src + 'sass/**/*.scss',
-		js:    		src + 'js/**/*.js',		
-		images: 	src + 'images/**/*.*',
-		php: 		src + '*.php',
-		test: 		src + 'tests/*.js'
-	},
-	clean:      	dist
+		build: {
+			html:  		dist,
+			sass:   		dist + 'css/',
+			js:    		dist + 'js/',		
+			images:   	dist + 'images/',
+			fonts: 		dist + 'fonts/',
+			php:   		dist,
+			htaccess: 	dist
+		},
+		src: {
+			html:  		src + '*.html',
+			sass: 		src + 'sass/main.scss',
+			js:    		src + 'js/**/*.js',
+			images: 		src + 'images/**/*.*',
+			fonts: 		src + 'fonts/**/*.*',
+			php: 			src + '*.php',
+			htaccess: 	src + '.htaccess',
+			test: 		src + 'tests/*.js'
+		},
+		watch: {
+			html:   		src + '*.html',
+			sass: 		src + 'sass/**/*.scss',
+			js:    		src + 'js/**/*.js',		
+			images: 		src + 'images/**/*.*',
+			php: 			src + '*.php',
+			test: 		src + 'tests/*.js'
+		},
+		clean:      	dist
 };
 
 /*--------------------------------------------------------------
@@ -107,7 +107,7 @@ gulp.task('sass', function () {
 	.pipe(plumber())      
 	.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 	//.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
-	.pipe(autoprefixer({browsers: ['last 5 versions']}))
+	.pipe(autoprefixer({browsers: autoprefixerList}))
 	//.pipe(csscomb())
 	.pipe(rename({suffix: '.min'}))
 	.pipe(sourcemaps.write('../maps/'))

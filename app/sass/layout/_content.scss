@@ -1,11 +1,10 @@
 .page {
-	display: flex;
-	flex-direction: column;
 	height: 100%;
+	margin: 0 auto;
 }
 
 .content-wrapper {
-	flex: 1 0 auto;
+	margin-bottom: 20px;
 }
 
 .content {
