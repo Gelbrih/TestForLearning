@@ -7,7 +7,7 @@ var gulp     	 	= require('gulp'),
 	 rsync 		 	= require('gulp-rsync'),
 	 plumber 	 	= require('gulp-plumber'),
 	 uglify   	 	= require('gulp-uglify'),
-	 rigger 		 	= require('gulp-rigger'),
+	 rigger 		= require('gulp-rigger'),
 	 concat       	= require('gulp-concat'),
 	 rename   	 	= require('gulp-rename'),
 	 imagemin 	 	= require('gulp-imagemin'),
@@ -15,7 +15,7 @@ var gulp     	 	= require('gulp'),
 	 autoprefixer 	= require('gulp-autoprefixer'),
 	 iconfont 	 	= require('gulp-iconfont'),
 	 sourcemaps	 	= require('gulp-sourcemaps'),
-	 del 		 		= require('del');
+	 del 		 	= require('del');
 
 var autoprefixerList = [
 	'Chrome >= 45',
@@ -33,12 +33,12 @@ var autoprefixerList = [
 --------------------------------------------------------------*/
 
 var dist = 'dist/',
- 	 src  = 'app/';
+ 	 src = 'app/';
 
 var path = {
 		build: {
 			html:  		dist,
-			sass:   		dist + 'css/',
+			sass:   	dist + 'css/',
 			js:    		dist + 'js/',		
 			images:   	dist + 'images/',
 			fonts: 		dist + 'fonts/',
@@ -49,18 +49,18 @@ var path = {
 			html:  		src + '*.html',
 			sass: 		src + 'sass/main.scss',
 			js:    		src + 'js/**/*.js',
-			images: 		src + 'images/**/*.*',
+			images: 	src + 'images/**/*.*',
 			fonts: 		src + 'fonts/**/*.*',
-			php: 			src + '*.php',
+			php: 		src + '*.php',
 			htaccess: 	src + '.htaccess',
 			test: 		src + 'tests/*.js'
 		},
 		watch: {
-			html:   		src + '*.html',
+			html:   	src + '*.html',
 			sass: 		src + 'sass/**/*.scss',
 			js:    		src + 'js/**/*.js',		
-			images: 		src + 'images/**/*.*',
-			php: 			src + '*.php',
+			images: 	src + 'images/**/*.*',
+			php: 		src + '*.php',
 			test: 		src + 'tests/*.js'
 		},
 		clean:      	dist
@@ -75,6 +75,7 @@ gulp.task('server', function() {
 		server: { 
 			baseDir: dist 
 		},
+		browser: 'opera',
 		notify: false 
 	});
 });	
@@ -193,7 +194,7 @@ gulp.task('htaccess', function () {
 
 gulp.task('test', function () {
 	gulp.src('app/tests/*.js', {read: false})	 
-	.pipe(babel())	
+	//.pipe(babel())	
 	 .pipe(mocha({require: ['@babel/register']}));	
 });
 
@@ -203,8 +204,8 @@ gulp.task('test', function () {
 
 gulp.task('watch', ['server'], function() {
     gulp.watch(path.watch.html, ['html']);
-    gulp.watch(path.watch.styles, ['sass']);
-    gulp.watch(path.watch.scripts, ['js']);
+    gulp.watch(path.watch.sass, ['sass']);
+    gulp.watch(path.watch.js, ['js']);
     gulp.watch(path.watch.images, ['images']);
 });
 

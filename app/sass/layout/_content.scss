@@ -7,6 +7,30 @@
 	margin-bottom: 20px;
 }
 
+.container {
+	width: 100%;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	@include mq(md) {
+		width: map_get($content-width, md);
+	}
+
+	@include mq(lg) {
+		width: map_get($content-width, lg);
+	}
+
+	@include mq(xl) {
+		width: map_get($content-width, xl);
+	}
+}
+
 .content {
 	overflow: auto;
+}
+
+section {
+	padding-top: 30px;
+	padding-bottom: 30px;
 }

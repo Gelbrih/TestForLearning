@@ -3,6 +3,7 @@
 var assert  = require('assert');
 
 import { function_name } from '../js/main.js';
+//const function_name = require('../js/main.js');
 
 describe("describe_name / function_name", function() {
 

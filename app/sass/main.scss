@@ -4,6 +4,12 @@
 @import "base/_normalize.scss";
 
 //------------------------------------------------------------//
+// Vendor
+//------------------------------------------------------------//
+
+//@import "vendor/"
+
+//------------------------------------------------------------//
 // Content
 //------------------------------------------------------------//
 
@@ -26,22 +32,18 @@
 @import "layout/_footer.scss";
 
 //------------------------------------------------------------//
-// Elements
+// Components
 //------------------------------------------------------------//
 
-@import "modules/_navigation.scss";
-@import "modules/_form.scss";
-@import "modules/_table.scss";
-@import "modules/_button.scss";
+@import "components/_navigation.scss";
+@import "components/_card.scss";
+@import "components/_form.scss";
+@import "components/_table.scss";
+@import "components/_tabs.scss";
+@import "components/_button.scss";
 
 //------------------------------------------------------------//
 // State
 //------------------------------------------------------------//
 
 @import "state/_media-queries.scss";
-
-//------------------------------------------------------------//
-// Vendor
-//------------------------------------------------------------//
-
-//@import "vendor/"

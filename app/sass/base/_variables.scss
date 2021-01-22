@@ -2,92 +2,105 @@
 // Colors
 //------------------------------------------------------------//
 
-$white:		#fff;
-$gray:		#eee; 
-$black:		#000;
+$white:     #fff;
+$gray:      #eee;
+$black:     #000;
 
-$primary:	#007bff;
-$secondary:	#fd7e14;
+$text-color:#333333;
+$primary:   #1fcdff;
+$secondary: #2f2f2f;
 $tertiary:  #6f42c1;
 
-$success:	#28a745;
-$info:		#17a2b8;
-$warning:	#ffc107;	
-$danger:		#f40003;
+$success:   #28a745;
+$info:      #17a2b8;
+$warning:   #ffc107;
+$danger:    #f40003;
 
 //------------------------------------------------------------//
 // Fonts
 //------------------------------------------------------------//
 
-$font-family-base:      "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$font-size-base:			1rem;
+$font-size-base: 14px;
 
-$h1-font-size:          $font-size-base * 2.5;
-$h2-font-size:          $font-size-base * 2;
-$h3-font-size:          $font-size-base * 1.75;
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
 
 //------------------------------------------------------------//
 // Links
 //------------------------------------------------------------//
 
-$link-color:				$primary;
-$link-hover-color:		darken($link-color, 20%);
+$menu-link-color:       $white;
+$menu-link-color-hover: $primary;
+
+$link-color:            $primary;
+$link-color-hover:      $secondary;
 
 //------------------------------------------------------------//
 // Border
 //------------------------------------------------------------//
 
-$border:						1px solid lighten($black, 35%);
-$border-radius:			5px;
+$border:        1px solid #000;
+
+$border-radius: 5px;
 
 //------------------------------------------------------------//
 // Tables
 //------------------------------------------------------------//
 
-$table-border:				$border;
-$table-border-radius:	$border-radius;
+$table-border:        $border;
+$table-border-radius: $border-radius;
 
-$table-hover-bg:        rgba($black, .075);
-$table-active-bg:       $table-hover-bg;
+$table-bg-hover:      rgba($black, 0.075);
+$table-bg-active:     $table-bg-hover;
 
-$table-head-color:      $black;
-$table-head-bg:         $gray;
+$table-head-color:    $black;
+$table-head-bg:       $gray;
 
-$table-cell-padding:		.5rem;
+$table-cell-padding:  0.5rem;
 
 //------------------------------------------------------------//
 // Forms
 //------------------------------------------------------------//
 
-$input-margin:          0 0 1rem;
-$input-padding:         .5rem .75rem;
+$input-margin:        0 0 15px;
+$input-padding:       5px 10px;
 
-$input-border-color:    $border;
+$input-border-color:  $border;
 
 //------------------------------------------------------------//
 // Buttons
 //------------------------------------------------------------//
 
-$button-padding:			.5rem 1rem;
+$button-padding:      10px 30px;
 
-$button-border-color:	$border;
+$button-border-color: $border;
 
 //------------------------------------------------------------//
 // Modal
 //------------------------------------------------------------//
 
-$modal-bg:              $white;
-$modal-border-radius:	$border-radius;
+$modal-bg:            $white;
+$modal-border-radius: $border-radius;
 
 //------------------------------------------------------------//
 // Breakpoints
 //------------------------------------------------------------//
+
+$content-width: (
+  xs: 100%,
+  sm: 100%,
+  md: 750px,
+  lg: 970px,
+  xl: 1200px,
+);
 
 $grid-breakpoints: (
   xs: 480px,
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1200px,
 );

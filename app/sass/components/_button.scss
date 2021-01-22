@@ -1,11 +1,13 @@
-button {
+.button {
 	display: inline-block;
 	padding: $button-padding;
 	border: none;
 	border-radius: $border-radius;
 	text-transform: uppercase;
-	color: $white;
+	color: $secondary;
 	background: $primary;
+	font-size: $font-size-base * 1.2;
+	font-weight: bold;
 	cursor: pointer;
 
 	&:hover {

@@ -1,12 +1,16 @@
 html {
-	font-size: 14px;	
+	font-size: $font-size-base;	
+	font-family: $font-family-base;
+	line-height: 1.4;
 }
-h1 {
-	font-size: $h1-font-size;	
+
+.title {
+	margin: 0 30px;
+	font-size: $font-size-base * 2.5;
+	color: $secondary;
 }
-h2 {
-	font-size: $h2-font-size;
-}
-h3 {
-	font-size: $h3-font-size;
+
+.subtitle {
+	font-size: $font-size-base * 1.5;
+	color: $secondary;
 }

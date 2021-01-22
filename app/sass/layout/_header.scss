@@ -1,12 +1,38 @@
 .header {
-	padding: 20px 0 0;
-	margin-bottom:20px;
+	position: relative;
+	display: flex;
+	width: auto;
+	margin: 0 auto;
+	padding: 15px 0 0;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-content: center;
+
+	@include mq(sm) {		
+		padding: 30px 20px 0;
+	}
+
+	@include mq(xl) {
+		width: map_get($content-width, xl);
+		padding: 30px 10px 0;
+	}
 }
 
 .logo {
-	float: left;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+
+	@include mq(sm) {
+		flex: initial;
+	}	
 }
 
 .header-information {
-	float: right;	 
+	display: none;
+	flex: initial;
+
+	@include mq(sm) {
+		display: block;	
+	}
 }
