@@ -1,0 +1,36 @@
+html {
+   font: $font-size-document $font-family-base;
+}
+
+.page {
+   font-size: $font-size-base;
+}
+
+h1 {
+   font-size: $h1-font-size;
+}
+
+h2 {
+   font-size: $h2-font-size;
+}
+
+h3 {
+   font-size: $h3-font-size;
+}
+
+// @font-face {
+// font-family: 'MyFont';
+// src:	local('MyFont Regular'),
+// local('MyFont-Regular'),
+// url('../fonts/MyFont/MyFontregular.woff') format('woff');
+// font-weight: 400;
+// font-style: normal;
+// }
+// @font-face {
+// font-family: 'MyFont';
+// src: 	local('MyFont Italic'),
+// local('MyFont-Italic'),
+// url('../fonts/MyFont/MyFontitalic.woff') format('woff');
+// font-weight: 400;
+// font-style: italic;
+// }

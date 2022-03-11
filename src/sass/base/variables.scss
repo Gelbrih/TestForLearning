@@ -1,0 +1,93 @@
+// ------------------------------------------------------------//
+// Colors
+// ------------------------------------------------------------//
+
+$white:       #ffffff;
+$gray:        #eeeeee;
+$black:       #000;
+$text-color:  #333333;
+$primary:     #1fcdff;
+$secondary:   #2f2f2f;
+$tertiary:    #6f42c1;
+$success:     #28a745;
+$info:        #17a2b8;
+$warning:     #ffc107;
+$danger:      #f40003;
+
+// ------------------------------------------------------------//
+// Fonts
+// ------------------------------------------------------------//
+
+$font-family-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-size-document: 10px;
+$font-size-base: 1.4rem;
+
+$h1-font-size: 2.8rem;
+$h2-font-size: 2.2rem;
+$h3-font-size: 1.8rem;
+
+// ------------------------------------------------------------//
+// Links
+// ------------------------------------------------------------//
+
+$menu-link-color:       $primary;
+$menu-link-color-hover: $secondary;
+$link-color:            $primary;
+$link-color-hover:      $secondary;
+
+// ------------------------------------------------------------//
+// Border
+// ------------------------------------------------------------//
+
+$border-color: #333;
+$border: 1px solid $border-color;
+$border-radius: 5px;
+
+// ------------------------------------------------------------//
+// Tables
+// ------------------------------------------------------------//
+
+$table-border: $border;
+$table-border-radius: $border-radius;
+
+$table-bg-hover: rgba($black, 0.075);
+$table-bg-active: $table-bg-hover;
+
+$table-head-color: $black;
+$table-head-bg: $gray;
+
+$table-cell-padding: 0.5rem;
+
+// ------------------------------------------------------------//
+// Buttons
+// ------------------------------------------------------------//
+
+$button-bg: $primary;
+$button-bg-hover: $white;
+$button-border-color: $border;
+
+// ------------------------------------------------------------//
+// Modal
+// ------------------------------------------------------------//
+
+$modal-bg: $white;
+$modal-border-radius: $border-radius;
+
+// ------------------------------------------------------------//
+// Breakpoints
+// ------------------------------------------------------------//
+
+$content-width: (
+  xs: 100%,
+  sm: 100%,
+  md: 750px,
+  lg: 970px,
+  xl: 1200px,
+);
+$grid-breakpoints: (
+  xs: 480px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);

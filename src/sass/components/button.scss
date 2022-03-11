@@ -1,0 +1,20 @@
+.button {
+   display: inline-block;
+   padding: 10px;
+
+   border: none;
+   border-radius: $border-radius;
+
+   font-size: $font-size-base;
+   text-transform: uppercase;
+
+   background: $button-bg-hover;
+   border: $border;
+   cursor: pointer;
+
+   &:hover {
+      text-decoration: none;
+      color: $primary;
+      border: 1px solid $primary;
+   }
+}

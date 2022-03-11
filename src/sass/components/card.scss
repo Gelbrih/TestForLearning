@@ -1,0 +1,25 @@
+.cards {
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: space-evenly;
+   text-align: center;
+}
+
+.card {
+   flex: initial;
+   max-width: 350px;
+   margin-bottom: 20px;
+   padding: 10px;
+}
+
+.card-title {
+   margin-bottom: 15px;
+   font-weight: bold;
+   color: $primary;
+}
+
+.card-subtitle {
+   font-size: 1.3rem;
+   color: lighten($text-color, 20%);
+   font-weight: normal;
+}

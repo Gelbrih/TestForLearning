@@ -1,0 +1,18 @@
+.header {
+	margin: 0 auto 20px;
+	padding: 15px 0 0;	
+
+	.container{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;	
+	}
+}
+
+.header-tools {
+	display: none;
+
+	@include mq(sm) {
+		display: block;	
+	}
+}

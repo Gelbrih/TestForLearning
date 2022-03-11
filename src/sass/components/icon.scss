@@ -1,0 +1,15 @@
+@font-face {
+   font-family: "iconfont";
+   src: url("../fonts/icon/iconfont.woff?r0x0qu") format("woff");
+   font-weight: normal;
+   font-style: normal;
+}
+
+.icon {
+   font: 1.4rem "iconfont", $font-family-base;
+   color: $secondary;
+
+   &:hover {
+      color: $primary;
+   }
+}

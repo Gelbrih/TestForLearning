@@ -1,0 +1,142 @@
+.menu {
+   margin: 0 0 10px 0;
+   padding: 0;
+   list-style: none;
+}
+
+.menu-link {
+   display: block;
+   padding: 0.5rem 1rem;
+
+   font-weight: bold;  
+   text-transform: uppercase;
+   color: $menu-link-color;
+
+   &:hover {
+      text-decoration: none;
+      color: $menu-link-color-hover;
+   }
+}
+
+.menu-toggle-label {
+   position: relative;
+   display: block;
+   width: 25px;
+   height: 25px;
+   float: right;
+   margin: 10px 10px 20px;
+
+   font-size: $font-size-base * 2;
+   color: $menu-link-color;
+   cursor: pointer;
+
+   &:after {
+      content: attr(data-open);
+   }
+
+   &:hover {
+      color: $menu-link-color-hover;
+   }
+
+   @include mq(sm) {
+      display: none;
+   }
+}
+
+.menu-toggle {
+   display: none;
+
+   &:checked {
+      + .menu-toggle-label:after {
+         content: attr(data-close);
+      }
+
+      ~ .menu {
+         display: inline-block;
+         width: 100%;
+         margin: 0;
+         padding: 0;
+
+         @include mq(sm) {
+            display: flex;
+            flex-flow: row nowrap;
+         }
+      }
+   }
+}
+
+.menu-toggle-label {
+   position: relative;
+   display: block;
+   width: 25px;
+   height: 25px;
+   float: right;  
+   margin: 10px 10px 20px;
+   font-size: $font-size-base * 2;
+   color: $menu-link-color;
+   cursor: pointer;
+
+   &:after {
+      content: attr(data-open);
+   }
+
+   &:hover {
+      color: $menu-link-color-hover;
+   }
+
+   @include mq(sm) {
+      display: none;
+   }
+}
+
+.menu-toggle {
+   display: none;
+
+   &:checked {
+      + .menu-toggle-label:after {
+         content: attr(data-close);
+      }
+
+      ~.menu {
+         display: inline-block;
+         width: 100%;
+         margin: 0;
+         padding: 0;
+
+         @include mq(sm) {
+            display: flex;
+            flex-flow: row nowrap;
+         }
+      }
+   }
+}
+
+.main-navigation {
+   position: relative;  
+   flex: auto;
+   text-align: center;
+
+   @include mq(sm) {
+      width: 100%;
+      margin-top: 20px;
+   }
+
+   &:before,
+   &:after {
+      @include clearfix;
+   }
+
+   .main-menu {
+      display: none;
+
+      @include mq(sm) {
+         display: flex;
+         flex-flow: row nowrap;
+         width: 100%;
+      }
+   }
+
+   .menu-item {
+      flex: auto;
+   }
+}

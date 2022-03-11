@@ -1,0 +1,53 @@
+.tabs {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.tabs-label {
+   display: block;
+   width: 100%;
+   margin-right: 0;
+   margin-top: 0.2rem;
+   padding: 1rem 2rem;
+   order: initial;
+   font-weight: bold;
+   background: $primary;
+   transition: background ease 0.4s;
+   cursor: pointer;
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+
+   @include mq(sm) {
+      margin-right: 0.2rem;
+      margin-top: 0;
+      order: 1;
+      width: auto;
+   }
+}
+
+.tab {
+   display: none;
+   width: 100%;
+   padding: 1rem;
+   flex-grow: 1;
+   order: initial;
+
+   @include mq(sm) {
+      order: 99;
+   }
+}
+.tabs-toggle {
+   display: none;
+
+   &:checked + label {
+      background: transparent;
+   }
+
+   &:checked + label + .tab {
+      display: block;
+   }
+}
