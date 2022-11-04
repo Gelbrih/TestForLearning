@@ -38,6 +38,8 @@
 
 .page {
    overflow: hidden;
+   display: flex;
+   justify-content: center
 }
 @import "components/login-form";
 @import "components/icon";
