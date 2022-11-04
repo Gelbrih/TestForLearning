@@ -35,10 +35,10 @@
 // ------------------------------------------------------------//
 // Components
 // ------------------------------------------------------------//
-.page {
-display:block;
-}
 
+.page {
+   overflow: hidden;
+}
 @import "components/login-form";
 @import "components/icon";
 @import "components/table";
