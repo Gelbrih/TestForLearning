@@ -37,5 +37,6 @@ function Calculator() {
       this.methods[name] = func;
    };
 }
+
 //import { slider } from "./modules/_slider.js";
 //import { modal} from "./modules/modal.js";
