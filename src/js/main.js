@@ -12,30 +12,17 @@ alert(filtered); // 3,1 (совпадающие значения)
 
 alert(arr); // 5,3,8,1 (без изменений)
 
-function Calculator() {
 
-   this.methods = {
-      "-": (a, b) => a - b,
-      "+": (a, b) => a + b
-   };
+function aclean(arr) {
+   let map = new Map();
 
-   this.calculate = function (str) {
-
-      let split = str.split(' '),
-         a = +split[0],
-         op = split[1],
-         b = +split[2]
-
-      if (!this.methods[op] || isNaN(a) || isNaN(b)) {
-         return NaN;
-      }
-
-      return this.methods[op](a, b);
+   for (let word of arr) {
+      // разбиваем слово на буквы, сортируем и объединяем снова в строку
+      let sorted = word.toLowerCase().split("").sort().join(""); // (*)
+      map.set(sorted, word);
    }
 
-   this.addMethod = function (name, func) {
-      this.methods[name] = func;
-   };
+   return Array.from(map.values());
 }
 
 //import { slider } from "./modules/_slider.js";
