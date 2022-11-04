@@ -25,5 +25,11 @@ function aclean(arr) {
    return Array.from(map.values());
 }
 
+let messages = [
+   { text: "Hello", from: "John" },
+   { text: "How goes?", from: "John" },
+   { text: "See you soon", from: "Alice" }
+];
+
 //import { slider } from "./modules/_slider.js";
 //import { modal} from "./modules/modal.js";
