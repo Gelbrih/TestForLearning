@@ -24,11 +24,7 @@ global.isDev = !process.argv.includes('--build');
 
 // Monitoring file changes
 function watcher() {
-	gulp.watch(path.watch.files, files);
-	gulp.watch(path.watch.html, html);
-	gulp.watch(path.watch.sass, sass);
-	gulp.watch(path.watch.js, js);
-	gulp.watch(path.watch.images, images);
+	console.log('watcher off');
 }
 
 // Tasks completion
