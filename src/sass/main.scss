@@ -35,7 +35,9 @@
 // ------------------------------------------------------------//
 // Components
 // ------------------------------------------------------------//
-
+.page {
+display:block;
+}
 
 @import "components/login-form";
 @import "components/icon";
